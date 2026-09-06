@@ -1,6 +1,8 @@
 # Part 1 — N-grams
 
 > Part 1 of **[Tokens to Agents](../../README.md)** — building the path from classical language models to modern AI agents from first principles.
+>
+> 📖 **[Read the article on Medium](https://medium.com/@nahombirhan/the-textbook-fix-that-made-my-language-model-5-worse-e8586d5639b5)**
 
 **We start with the simplest possible language model: count what came before, and use those counts to predict what comes next.**
 

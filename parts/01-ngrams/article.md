@@ -14,7 +14,7 @@ The goal is not to avoid modern libraries. It is to understand the mechanisms th
 
 This is **Part 1: N-grams**.
 
-Code: GitHub `GITHUB_URL`
+Code: [github.com/NahomMA/tokens-to-agents](https://github.com/NahomMA/tokens-to-agents)
 
 ---
 
@@ -208,11 +208,11 @@ Now every possible next word receives some probability.
 
 And, as expected, the infinities disappear.
 
-| Model  | Unsmoothed | Laplace (α=1) |
-| ------ | ---------: | ------------: |
-| 1-gram |      329.1 |         332.6 |
-| 2-gram |          ∞ |         469.6 |
-| 3-gram |          ∞ |       1,642.4 |
+Perplexity before and after smoothing:
+
+* **1-gram** — 329.1 unsmoothed, **332.6** with Laplace
+* **2-gram** — ∞ unsmoothed, **469.6** with Laplace
+* **3-gram** — ∞ unsmoothed, **1,642.4** with Laplace
 
 Technically, the zero-probability problem is fixed.
 
@@ -338,9 +338,7 @@ bigram   = 0.4
 trigram  = 0.4
 ```
 
-Its perplexity was:
-
-# **90.0**
+Its perplexity was **90.0**.
 
 That is about **32% lower than the best individual tuned model**.
 
@@ -400,15 +398,13 @@ They solve a problem that the n-gram model makes impossible to ignore.
 
 The implementation changes dramatically after this point, but several ideas introduced here continue through modern language modeling.
 
-| Here                        | Later in the stack                                                                   |
-| --------------------------- | ------------------------------------------------------------------------------------ |
-| `P(next token \| context)`  | The autoregressive next-token objective                                              |
-| Perplexity                  | A common intrinsic measure of language-model predictive performance                  |
-| Limited n-gram history      | Much larger learned context representations                                          |
-| Exact symbolic contexts     | Distributed representations that can share information across similar inputs         |
-| `<unk>` vocabulary handling | Subword tokenization that reduces dependence on whole-word vocabularies              |
-| Smoothing                   | A first example of incorporating assumptions when the observed data are insufficient |
-| Interpolation               | Combining estimates with different strengths and reliability                         |
+* **Next-token probability** — becomes the autoregressive objective that modern language models are trained on.
+* **Perplexity** — remains a common intrinsic measure of predictive performance.
+* **Limited n-gram history** — becomes a much larger learned context representation.
+* **Exact symbolic contexts** — become distributed representations that can share information across similar inputs.
+* **`<unk>` vocabulary handling** — becomes subword tokenization, which reduces dependence on whole-word vocabularies.
+* **Smoothing** — a first example of introducing assumptions where the observed data are insufficient.
+* **Interpolation** — combining estimates that differ in specificity and reliability.
 
 Not every analogy is exact.
 
@@ -455,7 +451,7 @@ Before worrying about how an autonomous system behaves under attack, I want to u
 Everything in this article can be reproduced from the repository:
 
 ```bash
-git clone <GITHUB_URL>
+git clone https://github.com/NahomMA/tokens-to-agents.git
 cd tokens-to-agents
 
 uv sync
@@ -490,4 +486,4 @@ And from there, one step closer to the models behind today's agents.
 
 *Nahom M. Birhan — PhD researcher working on agentic AI security and robust AI.*
 
-[GitHub](https://github.com/NahomMA) · [Hugging Face](https://huggingface.co/Nahom-M)
+[nahomcyberai.tech](https://nahomcyberai.tech/) · [GitHub](https://github.com/NahomMA) · [Hugging Face](https://huggingface.co/Nahom-M) · [LinkedIn](https://www.linkedin.com/in/nahombirhan)

@@ -7,7 +7,8 @@
 ![Ruff](https://img.shields.io/badge/Ruff-passing-1F2937?style=flat-square&logo=ruff&logoColor=white)
 ![License MIT](https://img.shields.io/badge/License-MIT-1F2937?style=flat-square)
 ![Built from scratch](https://img.shields.io/badge/built-from%20scratch-0C6F79?style=flat-square)
-![Part 1 ready](https://img.shields.io/badge/Part%201-ready-0C6F79?style=flat-square)
+[![Part 1 published](https://img.shields.io/badge/Part%201-published-0C6F79?style=flat-square&logo=medium&logoColor=white)](https://medium.com/@nahombirhan/the-textbook-fix-that-made-my-language-model-5-worse-e8586d5639b5)
+[![Website](https://img.shields.io/badge/Website-nahomcyberai.tech-0C6F79?style=flat-square&logo=safari&logoColor=white)](https://nahomcyberai.tech/)
 
 This repository is a seven-part journey through the ideas that led from classical language models to today's agentic AI systems.
 
@@ -21,7 +22,7 @@ My research focuses on **agentic AI security**, and this series reflects the pat
 
 | # | Part                                             | What gets built                                                                                   | Status               |
 | - | ------------------------------------------------ | ------------------------------------------------------------------------------------------------- | -------------------- |
-| 1 | [N-grams](parts/01-ngrams)                       | Count-based language models, smoothing, and perplexity                                            | ✅ Ready              |
+| 1 | [N-grams](parts/01-ngrams)                       | Count-based language models, smoothing, and perplexity                                            | ✅ [Published](https://medium.com/@nahombirhan/the-textbook-fix-that-made-my-language-model-5-worse-e8586d5639b5) |
 | 2 | [Embeddings](parts/02-embeddings)                | TF-IDF, PPMI, and Skip-gram Word2Vec with negative sampling                                       | 🔧 Preparing release |
 | 3 | [Language Modeling](parts/03-language-modeling)  | A neural next-token model with manually derived gradients and no autograd                         | 🔧 Preparing release |
 | 4 | [Transformers](parts/04-transformers)            | Transformer encoder and decoder components from scratch, followed by modern Llama-style attention | 🔧 Preparing release |
@@ -105,7 +106,7 @@ Parts 2–7 show the intended stack; only Part 1 is released. Nothing in Part 1 
 The project uses [uv](https://docs.astral.sh/uv/) for reproducible dependency management.
 
 ```bash
-git clone <GITHUB_URL>
+git clone https://github.com/NahomMA/tokens-to-agents.git
 cd tokens-to-agents
 
 uv sync
@@ -138,4 +139,4 @@ My broader research asks how we can understand, evaluate, and defend AI systems 
 
 This repository is both a record of that technical journey and a collection of implementations I can continue building on in my research.
 
-[GitHub](https://github.com/NahomMA) · Medium `MEDIUM_URL` · [Hugging Face](https://huggingface.co/Nahom-M)
+[nahomcyberai.tech](https://nahomcyberai.tech/) · [GitHub](https://github.com/NahomMA) · [Medium](https://medium.com/@nahombirhan) · [Hugging Face](https://huggingface.co/Nahom-M) · [LinkedIn](https://www.linkedin.com/in/nahombirhan)
