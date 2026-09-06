@@ -8,6 +8,7 @@
 ![License MIT](https://img.shields.io/badge/License-MIT-1F2937?style=flat-square)
 ![Built from scratch](https://img.shields.io/badge/built-from%20scratch-0C6F79?style=flat-square)
 [![Part 1 published](https://img.shields.io/badge/Part%201-published-0C6F79?style=flat-square&logo=medium&logoColor=white)](https://medium.com/@nahombirhan/the-textbook-fix-that-made-my-language-model-5-worse-e8586d5639b5)
+[![Space](https://img.shields.io/badge/%F0%9F%A4%97%20Space-N--Gram%20Explorer-0C6F79?style=flat-square)](https://huggingface.co/spaces/Nahom-M/tokens-to-agents-01-ngrams)
 [![Website](https://img.shields.io/badge/Website-nahomcyberai.tech-0C6F79?style=flat-square&logo=safari&logoColor=white)](https://nahomcyberai.tech/)
 
 This repository is a seven-part journey through the ideas that led from classical language models to today's agentic AI systems.
@@ -22,7 +23,7 @@ My research focuses on **agentic AI security**, and this series reflects the pat
 
 | # | Part                                             | What gets built                                                                                   | Status               |
 | - | ------------------------------------------------ | ------------------------------------------------------------------------------------------------- | -------------------- |
-| 1 | [N-grams](parts/01-ngrams)                       | Count-based language models, smoothing, and perplexity                                            | ✅ [Published](https://medium.com/@nahombirhan/the-textbook-fix-that-made-my-language-model-5-worse-e8586d5639b5) |
+| 1 | [N-grams](parts/01-ngrams)                       | Count-based language models, smoothing, and perplexity                                            | ✅ [Article](https://medium.com/@nahombirhan/the-textbook-fix-that-made-my-language-model-5-worse-e8586d5639b5) · [Demo](https://huggingface.co/spaces/Nahom-M/tokens-to-agents-01-ngrams) |
 | 2 | [Embeddings](parts/02-embeddings)                | TF-IDF, PPMI, and Skip-gram Word2Vec with negative sampling                                       | 🔧 Preparing release |
 | 3 | [Language Modeling](parts/03-language-modeling)  | A neural next-token model with manually derived gradients and no autograd                         | 🔧 Preparing release |
 | 4 | [Transformers](parts/04-transformers)            | Transformer encoder and decoder components from scratch, followed by modern Llama-style attention | 🔧 Preparing release |

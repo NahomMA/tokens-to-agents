@@ -14,7 +14,7 @@ The goal is not to avoid modern libraries. It is to understand the mechanisms th
 
 This is **Part 1: N-grams**.
 
-Code: [github.com/NahomMA/tokens-to-agents](https://github.com/NahomMA/tokens-to-agents)
+Code: [github.com/NahomMA/tokens-to-agents](https://github.com/NahomMA/tokens-to-agents) · Interactive demo: [N-Gram Explorer](https://huggingface.co/spaces/Nahom-M/tokens-to-agents-01-ngrams)
 
 ---
 

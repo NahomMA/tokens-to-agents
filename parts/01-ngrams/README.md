@@ -2,7 +2,7 @@
 
 > Part 1 of **[Tokens to Agents](../../README.md)** — building the path from classical language models to modern AI agents from first principles.
 >
-> 📖 **[Read the article on Medium](https://medium.com/@nahombirhan/the-textbook-fix-that-made-my-language-model-5-worse-e8586d5639b5)**
+> 📖 **[Read the article on Medium](https://medium.com/@nahombirhan/the-textbook-fix-that-made-my-language-model-5-worse-e8586d5639b5)**  ·  🔢 **[Try the interactive demo](https://huggingface.co/spaces/Nahom-M/tokens-to-agents-01-ngrams)**
 
 **We start with the simplest possible language model: count what came before, and use those counts to predict what comes next.**
 
