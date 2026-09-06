@@ -1,0 +1,6 @@
+# The repo is managed with uv — prefer `uv sync` from the repo root, which
+# installs the shared core package and these deps from the committed lockfile.
+#
+# This file exists so Part 1 can also be installed standalone with plain pip:
+matplotlib>=3.8
+numpy>=1.26

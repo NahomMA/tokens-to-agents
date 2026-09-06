@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tokens-to-agents"
+version = "0.1.0"
+description = "Shared library for the Tokens to Agents series: plotting theme, evaluation, data loading."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Nahom M. Birhan" }]
+requires-python = ">=3.10"
+dependencies = [
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+]
+
+[project.urls]
+Repository = "https://github.com/NahomMA/tokens-to-agents"
+
+[tool.setuptools]
+packages = ["core"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[tool.ruff]
+line-length = 100

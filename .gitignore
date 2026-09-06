@@ -1,0 +1,43 @@
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Data — fetched by each part's download step, never committed
+data/
+*.csv
+*.tsv
+*.txt.gz
+*.zip
+
+# Model artifacts
+*.h5
+*.pt
+*.pth
+*.safetensors
+*.gguf
+checkpoints/
+adapters/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.ruff_cache/
+.pytest_cache/
+
+# uv creates .venv from the committed uv.lock — the lockfile itself IS tracked
+
+# Notebooks
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
