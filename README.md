@@ -2,6 +2,13 @@
 
 **Building the modern LLM stack from first principles, from n-grams to secure AI agents.**
 
+![Python 3.12+](https://img.shields.io/badge/Python-3.12+-1F2937?style=flat-square&logo=python&logoColor=white)
+![uv](https://img.shields.io/badge/uv-managed-1F2937?style=flat-square&logo=uv&logoColor=white)
+![Ruff](https://img.shields.io/badge/Ruff-passing-1F2937?style=flat-square&logo=ruff&logoColor=white)
+![License MIT](https://img.shields.io/badge/License-MIT-1F2937?style=flat-square)
+![Built from scratch](https://img.shields.io/badge/built-from%20scratch-0C6F79?style=flat-square)
+![Part 1 ready](https://img.shields.io/badge/Part%201-ready-0C6F79?style=flat-square)
+
 This repository is a seven-part journey through the ideas that led from classical language models to today's agentic AI systems.
 
 It starts with something simple: counting how often words appear together. From there, it moves through embeddings, neural language modeling, transformers, modern LLMs, tool-using agents, and finally the security problems that emerge when these systems begin to act in the world.
@@ -76,6 +83,22 @@ spaces/   interactive demos, published independently as Hugging Face Spaces
 ```
 
 Shared functionality lives in `core/` so that evaluation, visualization, and experiment conventions remain consistent across the series.
+
+## Stack
+
+The dependency list is short on purpose. In the early parts the model *is* the contribution, so almost nothing is imported; libraries appear only where reimplementing them would teach nothing — loading pretrained weights, serving a demo.
+
+| Part | Written by hand | Libraries |
+| - | - | - |
+| 1 · N-grams | counting, smoothing, interpolation, perplexity | ![NumPy](https://img.shields.io/badge/NumPy-4B5563?style=flat-square&logo=numpy&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-4B5563?style=flat-square) |
+| 2 · Embeddings | skip-gram, negative sampling, PPMI, TF-IDF | ![NumPy](https://img.shields.io/badge/NumPy-4B5563?style=flat-square&logo=numpy&logoColor=white) |
+| 3 · Language Modeling | forward pass, gradients, SGD — no autograd | ![NumPy](https://img.shields.io/badge/NumPy-4B5563?style=flat-square&logo=numpy&logoColor=white) |
+| 4 · Transformers | attention, multi-head, positional encoding, blocks | ![PyTorch](https://img.shields.io/badge/PyTorch-4B5563?style=flat-square&logo=pytorch&logoColor=white) ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-4B5563?style=flat-square&logo=huggingface&logoColor=white) |
+| 5 · LLMs & Prompting | eval harness, chunking, retrieval, RAG loop | ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-4B5563?style=flat-square&logo=huggingface&logoColor=white) ![Anthropic](https://img.shields.io/badge/Anthropic-4B5563?style=flat-square&logo=anthropic&logoColor=white) |
+| 6 · Agentic AI | agent loop, provider abstraction, handoffs | ![Anthropic](https://img.shields.io/badge/Anthropic-4B5563?style=flat-square&logo=anthropic&logoColor=white) |
+| 7 · Agentic AI Security | defense layers, adjudication, red-team corpus | ![Anthropic](https://img.shields.io/badge/Anthropic-4B5563?style=flat-square&logo=anthropic&logoColor=white) ![Streamlit](https://img.shields.io/badge/Streamlit-4B5563?style=flat-square&logo=streamlit&logoColor=white) |
+
+Parts 2–7 show the intended stack; only Part 1 is released. Nothing in Part 1 comes from an NLP library — NumPy is used as an array type and Matplotlib draws the figures.
 
 ## Quick start
 
