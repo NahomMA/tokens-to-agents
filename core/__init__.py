@@ -1,6 +1,6 @@
 """Shared library for the Tokens to Agents series."""
 
-from core import data, metrics, viz
+from core import corpus, data, metrics, viz
 
-__all__ = ["data", "metrics", "viz"]
-__version__ = "0.1.0"
+__all__ = ["corpus", "data", "metrics", "viz"]
+__version__ = "0.2.0"

@@ -1,52 +1,18 @@
-"""Financial PhraseBank: fetch, tokenize, split.
+"""Corpus access for Part 1, plus the vocabulary closure n-gram models need.
 
-The corpus is licensed CC BY-NC-SA 3.0, so it is downloaded on demand and never
-redistributed with this repository.
+Fetching, tokenization and the split live in `core.corpus` — one canonical copy
+shared by every part of the series.
 """
 
 from __future__ import annotations
 
-import random
-import re
-import zipfile
 from collections import Counter
-from pathlib import Path
 
-from core.data import fetch
-
-URL = "https://huggingface.co/datasets/takala/financial_phrasebank/resolve/main/data/FinancialPhraseBank-v1.0.zip"
-MEMBER = "FinancialPhraseBank-v1.0/Sentences_50Agree.txt"
+from core.corpus import sentences, split, tokenize
 
 BOS, EOS, UNK = "<s>", "</s>", "<unk>"
 
-_TOKEN = re.compile(r"[a-z0-9]+(?:[.'-][a-z0-9]+)*|[^\sa-z0-9]")
-
-
-def _extract() -> Path:
-    """Download the corpus archive once and unpack the sentence file beside it."""
-    archive = fetch(URL, "financial_phrasebank.zip")
-    target = archive.with_name("financial_phrasebank.txt")
-    if not target.exists():
-        with zipfile.ZipFile(archive) as z:
-            target.write_bytes(z.read(MEMBER))
-    return target
-
-
-def sentences() -> list[list[str]]:
-    """Every sentence as a lowercase token list, sentiment labels discarded."""
-    text = _extract().read_text(encoding="latin-1")
-    rows = (line.rsplit("@", 1)[0] for line in text.splitlines() if line.strip())
-    return [_TOKEN.findall(row.lower()) for row in rows]
-
-
-def split(
-    sents: list[list[str]], *, test_frac: float = 0.2, seed: int = 0
-) -> tuple[list[list[str]], list[list[str]]]:
-    """Shuffle once with a fixed seed, then cut."""
-    shuffled = sents[:]
-    random.Random(seed).shuffle(shuffled)
-    cut = int(len(shuffled) * (1 - test_frac))
-    return shuffled[:cut], shuffled[cut:]
+__all__ = ["BOS", "EOS", "UNK", "close_vocabulary", "sentences", "split", "tokenize"]
 
 
 def close_vocabulary(
@@ -61,5 +27,5 @@ def close_vocabulary(
     counts = Counter(t for s in train for t in s)
     vocab = {t for t, c in counts.items() if c >= min_count}
     vocab |= {UNK, EOS}
-    keep = lambda s: [t if t in vocab else UNK for t in s]
+    keep = lambda s: [t if t in vocab else UNK for t in s]  # noqa: E731
     return [keep(s) for s in train], [keep(s) for s in test], vocab

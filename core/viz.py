@@ -82,6 +82,8 @@ def bars(
     best: Best = "max",
     fmt: str = "{:,.4g}",
     log: bool = False,
+    ref: float | None = None,
+    ref_label: str = "",
     figsize: tuple[float, float] = (7.5, 4.2),
 ) -> Figure:
     """Sorted horizontal bars with the winner highlighted and every value labelled.
@@ -117,6 +119,13 @@ def bars(
             fontweight="bold" if i == win else "normal",
         )
 
+    if ref is not None:
+        ax.axvline(ref, color=HIGHLIGHT, lw=2, ls=(0, (4, 3)))
+        ax.annotate(
+            ref_label, xy=(ref, 1.0), xycoords=("data", "axes fraction"),
+            xytext=(5, -4), textcoords="offset points", va="top",
+            color=HIGHLIGHT, fontsize=10.5, fontweight="bold",
+        )
     ax.grid(axis="y", visible=False)
     _title(ax, title, xlabel)
     return fig
@@ -204,4 +213,61 @@ def grid_heatmap(
     ax.grid(visible=False)
     fig.colorbar(im, ax=ax, shrink=0.85, pad=0.02).outline.set_visible(False)
     _title(ax, title, xlabel, ylabel)
+    return fig
+
+
+def labeled_scatter(
+    xy: Sequence[Sequence[float]],
+    labels: Sequence[str],
+    groups: Sequence[str] | None = None,
+    *,
+    title: str,
+    figsize: tuple[float, float] = (8.2, 6.4),
+) -> Figure:
+    """A 2-D map of labelled points — built for word-embedding projections.
+
+    Every point carries its label directly; axes are unitless projections, so
+    ticks are dropped and the takeaway lives in the arrangement itself.
+    """
+    pts = np.asarray(xy, dtype=float)
+    names = sorted(set(groups)) if groups is not None else ["all"]
+    colour = {g: PALETTE[i % len(PALETTE)] for i, g in enumerate(names)}
+
+    fig, ax = plt.subplots(figsize=figsize)
+    texts = []
+    for i, label in enumerate(labels):
+        g = groups[i] if groups is not None else "all"
+        ax.scatter(*pts[i], s=42, color=colour[g], zorder=3)
+        texts.append(ax.annotate(
+            label, xy=pts[i], xytext=(6, 4), textcoords="offset points",
+            fontsize=11.5, color=INK, zorder=4,
+        ))
+
+    # Greedy de-overlap: give each label the first offset whose box is clear of
+    # every box already placed. Beats a dependency; good enough for ~30 points.
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    slots = [(6, 4, "left"), (6, -14, "left"), (-6, 4, "right"), (-6, -14, "right"),
+             (0, 10, "center"), (0, -20, "center"), (6, 16, "left"), (-6, 16, "right")]
+    placed = []
+    for text in texts:
+        for dx, dy, ha in slots:
+            text.set_position((dx, dy))
+            text.set_ha(ha)
+            box = text.get_window_extent(renderer).expanded(1.05, 1.1)
+            if not any(box.overlaps(prev) for prev in placed):
+                break
+        placed.append(text.get_window_extent(renderer).expanded(1.05, 1.1))
+    if groups is not None:
+        for g in names:
+            ax.scatter([], [], s=42, color=colour[g], label=g)
+        ax.legend(loc="best", fontsize=10.5, handletextpad=0.3, borderaxespad=0.4)
+
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.margins(0.14)
+    ax.grid(visible=False)
+    for side in ("left", "bottom"):
+        ax.spines[side].set_visible(False)
+    _title(ax, title)
     return fig

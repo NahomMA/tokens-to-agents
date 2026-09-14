@@ -150,4 +150,4 @@ That is our first step from classical language models toward learned representat
 
 ---
 
-**[← Tokens to Agents](../../README.md)** · **Next: Part 2 — Embeddings →**
+**[← Tokens to Agents](../../README.md)** · **[Next: Part 2 — Embeddings →](../02-embeddings)**

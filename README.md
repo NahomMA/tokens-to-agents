@@ -8,6 +8,7 @@
 ![License MIT](https://img.shields.io/badge/License-MIT-1F2937?style=flat-square)
 ![Built from scratch](https://img.shields.io/badge/built-from%20scratch-0C6F79?style=flat-square)
 [![Part 1 published](https://img.shields.io/badge/Part%201-published-0C6F79?style=flat-square&logo=medium&logoColor=white)](https://medium.com/@nahombirhan/the-textbook-fix-that-made-my-language-model-5-worse-e8586d5639b5)
+[![Part 2 demo](https://img.shields.io/badge/Part%202-demo%20live-0C6F79?style=flat-square)](https://huggingface.co/spaces/Nahom-M/tokens-to-agents-02-embeddings)
 [![Space](https://img.shields.io/badge/%F0%9F%A4%97%20Space-N--Gram%20Explorer-0C6F79?style=flat-square)](https://huggingface.co/spaces/Nahom-M/tokens-to-agents-01-ngrams)
 [![Website](https://img.shields.io/badge/Website-nahomcyberai.tech-0C6F79?style=flat-square&logo=safari&logoColor=white)](https://nahomcyberai.tech/)
 
@@ -24,7 +25,7 @@ My research focuses on **agentic AI security**, and this series reflects the pat
 | # | Part                                             | What gets built                                                                                   | Status               |
 | - | ------------------------------------------------ | ------------------------------------------------------------------------------------------------- | -------------------- |
 | 1 | [N-grams](parts/01-ngrams)                       | Count-based language models, smoothing, and perplexity                                            | ✅ [Article](https://medium.com/@nahombirhan/the-textbook-fix-that-made-my-language-model-5-worse-e8586d5639b5) · [Demo](https://huggingface.co/spaces/Nahom-M/tokens-to-agents-01-ngrams) |
-| 2 | [Embeddings](parts/02-embeddings)                | TF-IDF, PPMI, and Skip-gram Word2Vec with negative sampling                                       | 🔧 Preparing release |
+| 2 | [Embeddings](parts/02-embeddings)                | Word vectors two ways — counting (PPMI + SVD) vs predicting (skip-gram) — and counting wins       | ✅ [Demo](https://huggingface.co/spaces/Nahom-M/tokens-to-agents-02-embeddings) · article `PART2_MEDIUM_URL` |
 | 3 | [Language Modeling](parts/03-language-modeling)  | A neural next-token model with manually derived gradients and no autograd                         | 🔧 Preparing release |
 | 4 | [Transformers](parts/04-transformers)            | Transformer encoder and decoder components from scratch, followed by modern Llama-style attention | 🔧 Preparing release |
 | 5 | [LLMs & Prompting](parts/05-llms-and-prompting)  | In-context learning, prompting, reasoning behavior, prompt sensitivity, and RAG                   | 🔧 Preparing release |
@@ -93,7 +94,7 @@ The dependency list is short on purpose. In the early parts the model *is* the c
 | Part | Written by hand | Libraries |
 | - | - | - |
 | 1 · N-grams | counting, smoothing, interpolation, perplexity | ![NumPy](https://img.shields.io/badge/NumPy-4B5563?style=flat-square&logo=numpy&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-4B5563?style=flat-square) |
-| 2 · Embeddings | skip-gram, negative sampling, PPMI, TF-IDF | ![NumPy](https://img.shields.io/badge/NumPy-4B5563?style=flat-square&logo=numpy&logoColor=white) |
+| 2 · Embeddings | co-occurrence, PPMI, SVD, skip-gram + negative sampling | ![NumPy](https://img.shields.io/badge/NumPy-4B5563?style=flat-square&logo=numpy&logoColor=white) |
 | 3 · Language Modeling | forward pass, gradients, SGD — no autograd | ![NumPy](https://img.shields.io/badge/NumPy-4B5563?style=flat-square&logo=numpy&logoColor=white) |
 | 4 · Transformers | attention, multi-head, positional encoding, blocks | ![PyTorch](https://img.shields.io/badge/PyTorch-4B5563?style=flat-square&logo=pytorch&logoColor=white) ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-4B5563?style=flat-square&logo=huggingface&logoColor=white) |
 | 5 · LLMs & Prompting | eval harness, chunking, retrieval, RAG loop | ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-4B5563?style=flat-square&logo=huggingface&logoColor=white) ![Anthropic](https://img.shields.io/badge/Anthropic-4B5563?style=flat-square&logo=anthropic&logoColor=white) |
