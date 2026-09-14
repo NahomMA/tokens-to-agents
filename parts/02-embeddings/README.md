@@ -2,7 +2,7 @@
 
 > Part 2 of **[Tokens to Agents](../../README.md)** — building the path from classical language models to modern AI agents from first principles.
 >
-> 📖 Read the article on Medium — `PART2_MEDIUM_URL` · 🧭 **[Try the interactive demo](https://huggingface.co/spaces/Nahom-M/tokens-to-agents-02-embeddings)**
+> 📖 **[Read the article on Medium](https://medium.com/@nahombirhan/the-1990s-method-that-beat-my-neural-network-25e3e032f405)** · 🧭 **[Try the interactive demo](https://huggingface.co/spaces/Nahom-M/tokens-to-agents-02-embeddings)**
 
 **Two ways to turn words into vectors, built from scratch on Part 1's corpus — and the one with no training loop wins.**
 
