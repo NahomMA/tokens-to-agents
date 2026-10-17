@@ -2,7 +2,7 @@
 
 > Part 3 of **[Tokens to Agents](../../README.md)** — building the path from classical language models to modern AI agents from first principles.
 >
-> 📖 `Article — coming soon`
+> 📖 **[Read the article on Medium](https://medium.com/@nahombirhan/my-language-model-saw-jumped-seven-times-and-knew-what-came-next-9f0c2873fc4b)**
 
 **A neural next-token model with every gradient written by hand. One word of context, and it nearly catches Part 1's trigram.**
 
