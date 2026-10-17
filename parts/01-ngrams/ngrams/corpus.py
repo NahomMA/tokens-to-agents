@@ -27,5 +27,5 @@ def close_vocabulary(
     counts = Counter(t for s in train for t in s)
     vocab = {t for t, c in counts.items() if c >= min_count}
     vocab |= {UNK, EOS}
-    keep = lambda s: [t if t in vocab else UNK for t in s]  # noqa: E731
+    keep = lambda s: [t if t in vocab else UNK for t in s]
     return [keep(s) for s in train], [keep(s) for s in test], vocab

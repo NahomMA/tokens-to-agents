@@ -20,6 +20,7 @@ from typing import Literal
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.figure import Figure
+from matplotlib.ticker import FuncFormatter, LogLocator, NullFormatter
 
 # Okabe-Ito: colorblind-safe. ACCENT carries the message, MUTED is context.
 PALETTE = ("#0072B2", "#E69F00", "#009E73", "#CC79A7", "#56B4E9", "#D55E00")
@@ -84,19 +85,21 @@ def bars(
     log: bool = False,
     ref: float | None = None,
     ref_label: str = "",
+    highlight: str | None = None,
     figsize: tuple[float, float] = (7.5, 4.2),
 ) -> Figure:
     """Sorted horizontal bars with the winner highlighted and every value labelled.
 
     Horizontal keeps category names readable — never rotate x labels to fit.
-    `best` decides which end earns the accent colour.
+    `best` decides which end earns the accent colour; `highlight` names a bar
+    that takes it instead, for when the subject of the figure is not the winner.
     """
     labels, values = np.asarray(labels, dtype=object), np.asarray(values, dtype=float)
     order = np.argsort(values)
     if best == "min":
         order = order[::-1]
     labels, values = labels[order], values[order]
-    win = len(values) - 1
+    win = len(values) - 1 if highlight is None else int(np.flatnonzero(labels == highlight)[0])
 
     fig, ax = plt.subplots(figsize=figsize)
     colors = [MUTED] * len(values)
@@ -126,6 +129,47 @@ def bars(
             xytext=(5, -4), textcoords="offset points", va="top",
             color=HIGHLIGHT, fontsize=10.5, fontweight="bold",
         )
+    ax.grid(axis="y", visible=False)
+    _title(ax, title, xlabel)
+    return fig
+
+
+def paired_bars(
+    labels: Sequence[str],
+    series: Mapping[str, Sequence[float]],
+    *,
+    title: str,
+    xlabel: str = "",
+    fmt: str = "{:.3f}",
+    zero_label: str = "",
+    figsize: tuple[float, float] = (7.5, 5.0),
+) -> Figure:
+    """Two or three series side by side per category, first series in the accent colour.
+
+    Built for "what model A says vs what model B says" comparisons; a value at or
+    below zero is written as `zero_label` so an absence reads as a word, not a gap.
+    """
+    names = list(series)
+    data = np.asarray([series[n] for n in names], dtype=float)
+    n_series, n_cat = data.shape
+    height = 0.8 / n_series
+    fig, ax = plt.subplots(figsize=figsize)
+    ys = np.arange(n_cat)[::-1]
+
+    for i, name in enumerate(names):
+        color = ACCENT if i == 0 else MUTED
+        offs = ys + (n_series - 1 - i) * height - 0.4 + height / 2
+        ax.barh(offs, data[i], height=height * 0.92, color=color, label=name)
+        for y, v in zip(offs, data[i]):
+            text = fmt.format(v) if v > 0 else zero_label
+            ax.text(
+                max(v, 0) + data.max() * 0.015, y, text, va="center", fontsize=10.5,
+                color=INK if i == 0 else FAINT, fontweight="bold" if i == 0 else "normal",
+            )
+
+    ax.set_yticks(ys, labels)
+    ax.set_xlim(0, data.max() * 1.22)
+    ax.legend(loc="lower right", fontsize=10.5)
     ax.grid(axis="y", visible=False)
     _title(ax, title, xlabel)
     return fig
@@ -161,6 +205,9 @@ def trend(
 
     if log:
         ax.set_yscale("log")
+        ax.yaxis.set_major_locator(LogLocator(subs=(1.0, 2.0, 5.0)))
+        ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:,.0f}"))
+        ax.yaxis.set_minor_formatter(NullFormatter())
     ax.margins(x=0.02)
     ax.set_xlim(x.min(), x.max() + (x.max() - x.min()) * 0.28)
     ax.set_xticks([t for t in ax.get_xticks() if x.min() <= t <= x.max()])

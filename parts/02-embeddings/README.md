@@ -77,4 +77,4 @@ The hand-derived gradients from `predict.py` get assembled into a neural next-to
 
 ---
 
-**[← Part 1 — N-grams](../01-ngrams)** · **[Tokens to Agents](../../README.md)** · **Next: Part 3 — Language Modeling →**
+**[← Part 1 — N-grams](../01-ngrams)** · **[Tokens to Agents](../../README.md)** · **[Next: Part 3 — Language Modeling →](../03-language-modeling)**
